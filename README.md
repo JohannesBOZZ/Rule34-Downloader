@@ -6,3 +6,4 @@ Zum benutzen:
       src = da wo die Datei landet
       dst = da wo die Datei hin soll
 3.Die Datei ausführen
+
