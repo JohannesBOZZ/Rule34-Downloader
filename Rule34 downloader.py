@@ -4,7 +4,7 @@ import os # just for the file extension in line 24
 
 from rule34Py import rule34Py
 r34Py = rule34Py()
-search = r34Py.search(["Derpixon video"], limit=1000)#das in der liste wird auf rule34.xxx gesucht, das limeit geht nicht über 1000
+search = r34Py.search([""], page_id=0, limit=1000)#das in der liste wird auf rule34.xxx gesucht, das limeit geht nicht über 1000
 
 def download(url, file_name):
     res = requests.get(url, stream = True)
@@ -22,7 +22,7 @@ def download(url, file_name):
             
         print('Image sucessfully Downloaded: ',file_name)
         #phat wo die Datein rauskommen in meinen fall "C:/Users/JohannesBOZZ"
-        src = "C:/Users/JohannesBOZZ/" + file_name
+        src = "C:/Users/JohannesBOZZ/AppData/Local/Programs/Python/Python310/.Programme/" + file_name
         #ühat wo die Dateien hin sollen
         dst = "D:/Bilder/temp"
         if result.image:

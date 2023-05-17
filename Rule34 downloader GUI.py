@@ -14,16 +14,24 @@ root.geometry('900x420')
 root.title("Rule34 Downloader")
 root.resizable(False,False)
 
-
 def GUI():
-    count = int(count_entry.get())
+    if count_entry.get() != '':
+        count = int(count_entry.get())
+    else:
+        count = 1
+
     promt = promt_entry.get()
+
+    if page_id_entry.get() != '':
+        pageID = int(page_id_entry.get())
+    else:
+        pageID = 0
     if chackbox_videos.get()==0:
         promt += ' -video'
-    print(count, promt)
+    print(count, pageID, promt)
             
     r34Py = rule34Py()
-    search = r34Py.search([promt], limit=count)#das in der liste wird auf rule34.xxx gesucht, das limeit geht nicht über 1000
+    search = r34Py.search([promt],  limit=count)#das in der liste wird auf rule34.xxx gesucht, das limeit geht nicht über 1000
     
 
     def download(url, file_name):
@@ -59,8 +67,11 @@ def GUI():
             download(result.image, str(result.id) + file_extension)#für bild download
         else:
             download(result.video, str(result.id) + file_extension)#für video download   
-    
-    status_textbox.insert("0.0",'Download was sucessfully ' + str(datetime.now()) + '\n')
+
+    now = datetime.now()
+    status_textbox.configure(state="normal")
+    status_textbox.insert("0.0",'[' + str(now.strftime("%Y/%m/%d, %H:%M:%S")) + '] Download was sucessfully\n')
+    status_textbox.configure(state="disabled")
 
 #Styling der GUI
 frame = customtkinter.CTkFrame(master=root, fg_color='transparent')
@@ -73,31 +84,39 @@ label.place(relx=0.5, rely=0.1, anchor=tkinter.CENTER)
 count_entry = customtkinter.CTkEntry(master=frame, 
                                 placeholder_text='Count',
                                 font=('sora', 16),
-                                width=160,
+                                width=100,
                                 height=24,
                                 corner_radius=5)
-count_entry.place(relx=0.15, rely=0.3, anchor=tkinter.CENTER)
+count_entry.place(relx=0.12, rely=0.3, anchor=tkinter.CENTER)
+
+page_id_entry = customtkinter.CTkEntry(master=frame, 
+                                placeholder_text='Page',
+                                font=('sora', 16),
+                                width=60,
+                                height=24,
+                                corner_radius=5)
+page_id_entry.place(relx=0.2535, rely=0.3, anchor=tkinter.CENTER)
 #eingabe welche eigenschaften die bilder haben sollen
 promt_entry = customtkinter.CTkEntry(master=frame, 
                                     placeholder_text='Promt',
                                     font=('sora', 16),
-                                    width=240,
+                                    width=260,
                                     height=24,
                                     corner_radius=5)
-promt_entry.place(relx=0.45, rely=0.3, anchor=tkinter.CENTER)
+promt_entry.place(relx=0.482, rely=0.3, anchor=tkinter.CENTER)
 #ob man videos dabei haben will
 chackbox_videos = customtkinter.CTkCheckBox(master=frame, 
                                             text='Videos',
                                             height=24,
                                             corner_radius=5)
-chackbox_videos.place(relx=0.7, rely=0.3, anchor=tkinter.CENTER)
+chackbox_videos.place(relx=0.72, rely=0.3, anchor=tkinter.CENTER)
 #button um den download vorgang zu starten
 button = customtkinter.CTkButton(master=frame,
                                     height=32,
                                     corner_radius=5,
                                     text='Download', 
                                     command=GUI)
-button.place(relx=0.86, rely=0.3, anchor=tkinter.CENTER)
+button.place(relx=0.858, rely=0.3, anchor=tkinter.CENTER)
 #textbox wo reingschrieben wird wen der procces fertig ist
 status_textbox = customtkinter.CTkTextbox(master=frame,
                                         font=('sora', 16),
