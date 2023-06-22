@@ -5,10 +5,12 @@ Zum benutzen:
 2. CustomTkinter runterladen pip install customtkinter
 3.Die Datei ausführen
 
-oder einfach die exe benutzen
+oder einfach die exe Nutzen
 
 Count sagt wie viele Datein Heruntergeladen werden Limit ist 1000.
+
 Page sagt auf welcher seite Heruntergeladen wird eine page ist immer so groß wie der count und ist ohne eingabe standartmäsig auf 0 eingestehlt wass den neusten post enspricht.
+
 Prompt ist die nachricht die nach rule34.xxx gesendet wird dabei gelten die gleichen regel wie auf der seite in der suchleiste.
 die boxen mit Video und AI fügen ein -video und -ai-generated zum prompt hinzu bein anglicken wird nichts hinzugefügt
 
