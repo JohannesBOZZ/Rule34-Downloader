@@ -2,7 +2,7 @@ Ein Downloader für rule34.xxx
 
 Zum benutzen:
 1. rule34.py runterladen dafür pip install rule34Py
-2. CustomTkinter runterladen pip install customtkinter
+2. CustomTkinter runterladen pip install customtkinter 
 3.Die Datei ausführen
 
 oder einfach die exe Nutzen
