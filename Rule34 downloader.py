@@ -4,7 +4,7 @@ import os # just for the file extension in line 24
 
 from rule34Py import rule34Py
 r34Py = rule34Py()
-search = r34Py.search([""], page_id=0, limit=1000)# prompts in the list, max limit ist 1000 (limit from rule34.xxx) and the First image to be downloadet = pageID * count,
+search = r34Py.search(["blue-senpai -futa -censored -video"], page_id=1, limit=1000)# prompts in the list, max limit ist 1000 (limit from rule34.xxx) and the First image to be downloadet = pageID * count,
 
 def download(url, file_name):
     res = requests.get(url, stream = True)
@@ -22,9 +22,9 @@ def download(url, file_name):
             
         print('Image sucessfully Downloaded: ',file_name)
         # path where the image gets saved
-        src = "C:/Users/JohannesBOZZ/AppData/Local/Programs/Python/Python310/.Programme/" + file_name
+        src = r"C:\Users\JohannesBOZZ\AppData\Local\Programs\Python\Python310\.Programme" + "\\" + file_name
         # path where the image should be moved to
-        dst = "D:/Bilder/temp"
+        dst = r"D:\Bilder\temp"
         if result.image:
             shutil.move(src, dst)# for images
         else:
