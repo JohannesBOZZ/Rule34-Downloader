@@ -12,4 +12,6 @@ Page sagt auf welcher seite Heruntergeladen wird eine page ist immer so groß wi
 Prompt ist die nachricht die nach rule34.xxx gesendet wird dabei gelten die gleichen regel wie auf der seite in der suchleiste.
 die boxen mit Video und AI fügen ein -video und -ai-generated zum prompt hinzu bein anglicken wird nichts hinzugefügt
 
-Die Heruntergeladeten Datein werden in den Download Ordner von Windows in einen Neuangelegten Ordner mit den Prompt als Namen gelegt zum Beispiel ist der Prompt "derpixon" dan sind die heruntergeladenen Datein im Ordner C:\Users\(Benutzername)\Downloads\derpixon\![Screenshot 2023-06-22 143116](https://github.com/JohannesBOZZ/Rule34-Downloader/assets/95292913/b7beea11-2310-404a-b3cb-2d5924cf5ee2)
+Die Heruntergeladeten Datein werden in den Download Ordner von Windows in einen Neuangelegten Ordner mit den Prompt als Namen gelegt zum Beispiel ist der Prompt "derpixon" dan sind die heruntergeladenen Datein im Ordner C:\Users\(Benutzername)\Downloads\derpixon\
+
+![Rule34 Downloader GUI](https://github.com/JohannesBOZZ/Rule34-Downloader/assets/95292913/b7beea11-2310-404a-b3cb-2d5924cf5ee2)
