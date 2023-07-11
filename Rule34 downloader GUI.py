@@ -76,7 +76,8 @@ def GUI():
                 else:
                     page = int(count / Limit -1)
                     search += r34Py.search([prompt], page_id=page, limit=Limit)
-        print(len(search), ' elemente found')
+        search_len = len(search)
+        print(search_len, ' elemente found')
         now = datetime.now()
         status_textbox.configure(state="normal")
         status_textbox.insert("0.0",f'[{str(now.strftime("%Y/%m/%d, %H:%M:%S"))}] Found {len(search)} Posts\n')
@@ -100,7 +101,7 @@ def GUI():
                 # write the raw body data of the requests
                 # response to that file
                 shutil.copyfileobj(res.raw, f)
-            print('Image sucessfully Downloaded: ',file_name)
+            #print('Image sucessfully Downloaded: ',file_name)
             # path where the image gets saved
             try:
                 src = downloads_path + "\\" + file_name
@@ -122,7 +123,7 @@ def GUI():
                     convert_to_png(src, new_path, ("png"), file_name, str(result.id), dst, file_count)
                 else:
                     shutil.move(src, dst)
-                    progress_bar_def(file_count)
+                    progress_bar_def(file_count, search_len)
 
 
                 
@@ -152,10 +153,11 @@ def GUI():
                 download_successful = True
             except Exception as e:
                 print(f"An error occurred: {str(e)}")
-                print("Waiting for 10 seconds before retrying...")
-                for x in range(10):
+                print("Waiting for 30 seconds before retrying...")
+                for x in range(30):
                     progress_bar.update()
-                    print(f'{x+1} seconds')
+                    if '0' in str(x+1):
+                        print(f'{x+1} seconds')
                     time.sleep(1)
     
 
@@ -235,12 +237,13 @@ def mode(self):
         jpg_quality.place_forget()
 
 
-def progress_bar_def(test):
-    Value = int(test) / int(count_entry.get())
-    progress_bar_text.configure(text=f'{round(Value * 100)} %')
+def progress_bar_def(curent_file, search_len):
+    Value = int(curent_file) / int(search_len)
+    progress_bar_text.configure(text=f'{round(Value * 100)}% | {curent_file} of {search_len}')
     progress_bar_text.update()
     progress_bar.set(Value)
     progress_bar.update()
+
 
 
 # GUI Styling
@@ -357,15 +360,14 @@ status_textbox.place(relx=0.5, rely=0.695, anchor=tkinter.CENTER)
 status_textbox.configure(state="disabled")
 
 progress_bar = ctk.CTkProgressBar(master=frame,
-                                width=780,
+                                width=666,
                                 mode='determinate',)
 progress_bar.place(relx=0.02, rely=0.97, anchor=tkinter.W)
 progress_bar.set(0)
 
 progress_bar_text = ctk.CTkLabel(master=frame,
-                                text='0%',
+                                text='0% | 0 of 0',
                                 bg_color='transparent')
-progress_bar_text.place(relx=0.95, rely=0.97, anchor=tkinter.W)
-
+progress_bar_text.place(relx=0.815, rely=0.97, anchor=tkinter.W)
 
 root.mainloop()
